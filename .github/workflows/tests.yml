@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-          python-version: [3.6, 3.7, 3.8]
+          python-version: [3.6, 3.7]
           services: [release, lowest]
           include:
           - services: release
@@ -33,10 +33,6 @@ jobs:
           - services: lowest
             SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://invenio:invenio@localhost:5432/invenio"
             POSTGRESQL_VERSION: POSTGRESQL_9_LATEST
-            ES_VERSION: "ES_6_LATEST"
-            EXTRAS: "all,postgresql,elasticsearch6"
-            REQUIREMENTS: "lowest"
-            REQUIREMENTS_LEVEL: "min"
 
     env:
       SQLALCHEMY_DATABASE_URI: ${{matrix.SQLALCHEMY_DATABASE_URI}}
